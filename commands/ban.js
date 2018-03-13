@@ -11,9 +11,9 @@ module.exports.run = async (bot, message, args) => {
 		}
 		if(!buser) return message.reply("Couldn't find this user!")
 		if(buser.hasPermission("BAN_MEMBERS")) return message.channel.send(`${message.author}, this member cannot be banned!`);
-		message.guild.member(buser).ban();
-		buser.send(`You were banned in ${message.guild.name} for \`${reason}\` by ${message.author.username}`);
-
+		buser.send(`You were banned in ${message.guild.name} for \`${reason}\` by ${message.author.username}`).then(() => {
+			message.guild.member(buser).ban();
+		});
 		message.react("\u2705");
 	} else return message.reply("You do not have permission to ban members!");
 	return;

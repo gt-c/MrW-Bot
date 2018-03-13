@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
 		buser.send(`You were banned in ${message.guild.name} for \`${reason}\` by ${message.author.username}`);
 
 		message.react("\u2705");
-	} else return message.channel.send(`${message.author}, you do not have permission to kick members!`);
+	} else return message.reply("You do not have permission to ban members!");
 	return;
 }
 
